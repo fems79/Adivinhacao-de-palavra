@@ -1,0 +1,102 @@
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background-color: #e0f7fa; /* Azul claro */
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #00796b; /* Verde-água escuro */
+}
+
+.container-tiles {
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.linha {
+    display: flex; /* Flex para alinhar os tiles em linha */
+    justify-content: center;
+    margin: 10px 0; /* Aumentar espaçamento entre linhas */
+}
+
+.coluna {
+    width: 60px; /* Aumentar largura dos tiles */
+    height: 60px; /* Aumentar altura dos tiles */
+    border: 2px solid #00796b; /* Verde-água escuro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    font-size: 28px; /* Aumentar tamanho da fonte */
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s; /* Transição suave */
+}
+
+.desativado {
+    background-color: #e0f7fa; /* Azul claro */
+}
+
+.digitando {
+    background-color: #ffffff; /* Branco */
+}
+
+.correto {
+    background-color: #4caf50; /* Verde vibrante */
+    color: white;
+}
+
+.deslocado {
+    background-color: #ffeb3b; /* Amarelo vibrante */
+    color: black; /* Texto em preto para contraste */
+}
+
+.errado {
+    background-color: #f44336; /* Vermelho vibrante */
+    color: white;
+}
+
+#linhaTecladoPrimeira, #linhaTecladoSegunda, #linhaTecladoTerceira, #linhaBackspaceEnter {
+    margin: 20px 0;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px; /* Cantos arredondados */
+    background-color: #00796b; /* Verde-água escuro */
+    color: white; /* Texto branco */
+    transition: background-color 0.3s; /* Transição suave */
+}
+
+button:hover {
+    background-color: #004d40; /* Verde-água mais escuro ao passar o mouse */
+}
+
+button:active {
+    background-color: #00332e; /* Verde-água muito escuro ao clicar */
+}
+
+/* Estilo para a página de seleção de tema */
+.tema {
+    margin: 10px;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.tema:hover {
+    background-color: #5a6268;
+}
