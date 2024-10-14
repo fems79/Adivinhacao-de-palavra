@@ -66,3 +66,16 @@ const moverParaProximaLinha = (linhaAtual) => {
 
   return proximaLinha
 }
+// Coloca a letra clicada no teclado na linha atual
+const CliqueTeclado = (letra, linhaAtual, colunaAtual, numcolunas, tentativas) => {
+  if (colunaAtual === numcolunas) return {colunaAtual}
+  
+  const tileAtual = document.querySelector(`#linha${linhaAtual}coluna${colunaAtual}`)
+  tileAtual.textContent = letra
+
+  const tentativasAtualizadas = [...tentativas.slice(0, linhaAtual),
+    [...tentativas[linhaAtual].slice(0, colunaAtual), letra, ...tentativas[linhaAtual].slice(colunaAtual + 1)],
+    ...tentativas.slice(linhaAtual + 1)]
+  
+  return { colunaAtual: colunaAtual + 1, tentativasAtualizadas }
+}
