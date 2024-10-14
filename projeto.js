@@ -25,16 +25,7 @@ const Criar_tabuleiro= (numlinhas, numcolunas, elementoTabuleiro) => {
 }
 
 // Verifica a tentativa de adivinhar a palavra
-const verificador_Tentativa = (
-  tentativa,
-  palavraCorreta,
-  numcolunas,
-  letrasCorretas = [...palavraCorreta],
-  letrasTentativa = [...tentativa],
-  colunasDigitando = document.querySelectorAll(".digitando"),
-  letrasUsadas = Array(numcolunas).fill(false),
-  indice = 0
-) => {
+const verificador_Tentativa = (tentativa, palavraCorreta, numcolunas, letrasCorretas = [...palavraCorreta], letrasTentativa = [...tentativa], colunasDigitando = document.querySelectorAll(".digitando"), letrasUsadas = Array(numcolunas).fill(false), indice = 0) => {
   if (indice >= numcolunas) {
     const Correto = tentativa === palavraCorreta
     return { resultado: true, Correto }
