@@ -54,16 +54,7 @@ const verificador_Tentativa = (
     colunasDigitando[indice].classList.add("errado")
   }
 
-  return verificador_Tentativa(
-    tentativa,
-    palavraCorreta,
-    numcolunas,
-    letrasCorretas,
-    letrasTentativa,
-    colunasDigitando,
-    letrasUsadas,
-    indice + 1
-  )
+  return verificador_Tentativa(tentativa, palavraCorreta, numcolunas, letrasCorretas, letrasTentativa, colunasDigitando, letrasUsadas, indice + 1)
 }
 
 // Move o jogo para a próxima linha após a tentativa
