@@ -79,3 +79,16 @@ const CliqueTeclado = (letra, linhaAtual, colunaAtual, numcolunas, tentativas) =
   
   return { colunaAtual: colunaAtual + 1, tentativasAtualizadas }
 }
+// Remove a última letra digitada (Backspace)
+const lidarComBackspace = (colunaAtual, linhaAtual, tentativas) => {
+  if (colunaAtual === 0) return {colunaAtual}
+
+  const tileRemover = document.querySelector(`#linha${linhaAtual}coluna${colunaAtual - 1}`)
+  tileRemover.textContent = ""
+
+  const tentativasAtualizadas = [...tentativas.slice(0, linhaAtual),
+    [...tentativas[linhaAtual].slice(0, colunaAtual - 1), "", ...tentativas[linhaAtual].slice(colunaAtual)],
+    ...tentativas.slice(linhaAtual + 1)]
+
+  return { colunaAtual: colunaAtual - 1, tentativasAtualizadas }
+}
