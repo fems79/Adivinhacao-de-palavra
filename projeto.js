@@ -40,8 +40,8 @@ const verificador_Tentativa = (tentativa, palavraCorreta, numcolunas, letrasCorr
   }
   // Se a letra não estiver na posição correta, verifica se existe em outra posição
   else if (letrasCorretas.includes(letra)) {
-    colunasDigitando[indice].classList.add("deslocado")
-  } else {
+    colunasDigitando[indice].classList.add("deslocado")}
+  else {
     colunasDigitando[indice].classList.add("errado")
   }
 
