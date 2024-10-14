@@ -92,3 +92,11 @@ const lidarComBackspace = (colunaAtual, linhaAtual, tentativas) => {
 
   return { colunaAtual: colunaAtual - 1, tentativasAtualizadas }
 }
+// Controle das teclas
+const criarLinhaTeclado = (teclas, elementoTecladoLinha, CliqueTecla) => {teclas.forEach((tecla) => {
+    const botaoTecla = document.createElement("button")
+    botaoTecla.textContent = tecla
+    botaoTecla.setAttribute("id", tecla)
+    botaoTecla.addEventListener("click", () => CliqueTecla(tecla))
+    elementoTecladoLinha.append(botaoTecla)})
+}
