@@ -156,6 +156,8 @@ const botaoBackspace = document.createElement("button")
       else if (/^[A-Z]$/.test(teclaPressionada)) {CliqueTecla(teclaPressionada)}
     }
   }
+// Resgatando o tema escolhido 
+const temaEscolhido = localStorage.getItem("temaEscolhido")
   
-  //executa o jogo "termo" com 6 tentativas,5 letras cada e adiciona os teclados para interação com usuário
-  iniciarJogo("TERMO", 6, 5, document.querySelector(".container-tiles"), document.querySelector("#linhaTecladoPrimeira"), document.querySelector("#linhaTecladoSegunda"), document.querySelector("#linhaTecladoTerceira"), document.querySelector("#linhaBackspaceEnter"))
+//executa o jogo "termo" com 6 tentativas,5 letras cada e adiciona os teclados para interação com usuário
+  iniciarJogo(temaEscolhido, 6, 5, document.querySelector(".container-tiles"), document.querySelector("#linhaTecladoPrimeira"), document.querySelector("#linhaTecladoSegunda"), document.querySelector("#linhaTecladoTerceira"), document.querySelector("#linhaBackspaceEnter"))
