@@ -103,6 +103,26 @@ const criarLinhaTeclado = (teclas, elementoTecladoLinha, CliqueTecla) => {teclas
 //commit Leonardo Caricchio
 //função do momento inicial antes de qualquer interaçaõ do usuario
 const Jogo_do_zero = (tentativas) => ({linhaAtual: 0,colunaAtual: 0,tentativas,})
+//função nova Leonardo Caricchio do Nascimento
+//função para reiniciar o jogo caso o usuario acertar
+const reiniciarJogo = () => {
+  //constantes que armazenam os elementos do jogo
+  const tabuleiro = document.querySelector(".container-tiles");
+  const tecladoPrimeira = document.querySelector("#linhaTecladoPrimeira");
+  const tecladoSegunda = document.querySelector("#linhaTecladoSegunda");
+  const tecladoTerceira = document.querySelector("#linhaTecladoTerceira");
+  const tecladoBackspaceEnter = document.querySelector("#linhaBackspaceEnter");
+  //elementos do jogo sendo apagados,pois serao reiniciados
+  tabuleiro.innerHTML = "";
+  tecladoPrimeira.innerHTML = "";
+  tecladoSegunda.innerHTML = "";
+  tecladoTerceira.innerHTML = "";
+  tecladoBackspaceEnter.innerHTML = "";
+   
+  //aqui falta adicionar a função de danilo para escolher a palavra aleatoriamente
+  //chama a função para reiniciar com a nova palavra
+  iniciarJogo("TERMO", 6, 5, tabuleiro, tecladoPrimeira, tecladoSegunda, tecladoTerceira, tecladoBackspaceEnter);
+}
   
 // função que inicia o jogo
 const iniciarJogo = (palavraCorreta,numlinhas,numcolunas,elementoTabuleiro,linhaTecladoPrimeira,linhaTecladoSegunda,linhaTecladoTerceira,linhaBackspaceEnter) => {
@@ -143,9 +163,17 @@ const botaoBackspace = document.createElement("button")
           estadoJogo.linhaAtual = moverParaProximaLinha(estadoJogo.linhaAtual)
           estadoJogo.colunaAtual = 0
         }
-      }
+      // função leonardo caricchio do nascimento
+      //adição do botao de reinicio após acerto
+      const botaoReiniciar = document.createElement("button")
+      botaoReiniciar.textContent = "Reiniciar Jogo"
+      botaoReiniciar.addEventListener("click", reiniciarJogo)
+      document.body.append(botaoReiniciar)
+
+      return
+    }
     })
-    linhaBackspaceEnter.append(botaoEnter)
+  linhaBackspaceEnter.append(botaoEnter)
 
   //interação com a tecla digitada pelo usuário
 
