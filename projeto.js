@@ -191,7 +191,10 @@ const botaoBackspace = document.createElement("button")
 
     document.onkeydown = (evento) => {
       const teclaPressionada = evento.key.toUpperCase()
-      if (teclaPressionada === "ENTER") {botaoEnter.click()}
+      if (teclaPressionada === "ENTER") {
+        evento.preventDefault() 
+        botaoEnter.click()
+      }
       else if (teclaPressionada === "BACKSPACE") {botaoBackspace.click()} 
       else if (/^[A-Z]$/.test(teclaPressionada)) {CliqueTecla(teclaPressionada)}
     }
