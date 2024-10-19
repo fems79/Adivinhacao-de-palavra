@@ -128,7 +128,6 @@ const reiniciarJogo = () => {
   tecladoTerceira.innerHTML = "";
   tecladoBackspaceEnter.innerHTML = "";
    
-  //aqui falta adicionar a função de danilo para escolher a palavra aleatoriamente
   //chama a função para reiniciar com a nova palavra
   iniciarJogo(temaEscolhido, 6, 5, tabuleiro, tecladoPrimeira, tecladoSegunda, tecladoTerceira, tecladoBackspaceEnter);
 }
@@ -163,24 +162,28 @@ const botaoBackspace = document.createElement("button")
     botaoEnter.addEventListener("click", () => {
     const tentativaAtual =estadoJogo.tentativas[estadoJogo.linhaAtual].join("")
     const { resultado, Correto } =verificador_Tentativa(tentativaAtual,palavraCorreta,numcolunas)
-    
-    //Validação da tentativa do usuário  
-      
-    if (resultado) {
-        if (Correto) {alert("VOCÊ ACERTOU!!!")} 
-        else if (estadoJogo.linhaAtual === numlinhas - 1) {alert(`Você errou! A palavra correta era ${palavraCorreta}`)} else {
-          estadoJogo.linhaAtual = moverParaProximaLinha(estadoJogo.linhaAtual)
-          estadoJogo.colunaAtual = 0
+       
+   // Validação da tentativa do usuário  
+        if (resultado) {
+            if (Correto) {
+                alert("VOCÊ ACERTOU!!!")
+                // Cria o botão de reiniciar apenas se o usuário acertar
+                const botaoReiniciar = document.createElement("button")
+                botaoReiniciar.textContent = "Reiniciar Jogo"
+                botaoReiniciar.addEventListener("click", reiniciarJogo)
+                document.body.append(botaoReiniciar)
+            } else if (estadoJogo.linhaAtual === numlinhas - 1) {
+                alert(`Você errou! A palavra correta era ${palavraCorreta}`)
+                // Cria o botão de reiniciar apenas se o usuário esgotar as tentativas
+                const botaoReiniciar = document.createElement("button")
+                botaoReiniciar.textContent = "Reiniciar Jogo"
+                botaoReiniciar.addEventListener("click", reiniciarJogo)
+                document.body.append(botaoReiniciar)
+            } else {
+                estadoJogo.linhaAtual = moverParaProximaLinha(estadoJogo.linhaAtual);
+                estadoJogo.colunaAtual = 0
+            }
         }
-      // função leonardo caricchio do nascimento
-      //adição do botao de reinicio após acerto
-      const botaoReiniciar = document.createElement("button")
-      botaoReiniciar.textContent = "Reiniciar Jogo"
-      botaoReiniciar.addEventListener("click", reiniciarJogo)
-      document.body.append(botaoReiniciar)
-
-      return
-    }
     })
   linhaBackspaceEnter.append(botaoEnter)
 
