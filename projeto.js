@@ -130,7 +130,7 @@ const reiniciarJogo = () => {
    
   //aqui falta adicionar a função de danilo para escolher a palavra aleatoriamente
   //chama a função para reiniciar com a nova palavra
-  iniciarJogo(temaescolhido, 6, 5, tabuleiro, tecladoPrimeira, tecladoSegunda, tecladoTerceira, tecladoBackspaceEnter);
+  iniciarJogo(temaEscolhido, 6, 5, tabuleiro, tecladoPrimeira, tecladoSegunda, tecladoTerceira, tecladoBackspaceEnter);
 }
   
 // função que inicia o jogo
