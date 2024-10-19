@@ -25,29 +25,38 @@ const Criar_tabuleiro= (numlinhas, numcolunas, elementoTabuleiro) => {
 }
 
 // Verifica a tentativa de adivinhar a palavra
-const verificador_Tentativa = (tentativa, palavraCorreta, numcolunas, letrasCorretas = [...palavraCorreta.toUpperCase()], letrasTentativa = [...tentativa.toUpperCase()], colunasDigitando = document.querySelectorAll(".digitando"), letrasUsadas = Array(numcolunas).fill(false), indice = 0) => {
-  if (indice >= numcolunas) {
-    const Correto = tentativa.toUpperCase() === palavraCorreta.toUpperCase()
-    return { resultado: true, Correto }
-  }
+const verificador_Tentativa = (tentativa, palavraCorreta, numcolunas, letrasCorretas = [...palavraCorreta.toUpperCase()], letrasTentativa = [...tentativa.toUpperCase()], colunasDigitando = document.querySelectorAll(".digitando"), letrasUsadas = Array(numcolunas).fill(false), letrasRestantes = {}) => {
+   // Conta as letras restantes na palavra correta
+  letrasCorretas.forEach((letra) => {
+    letrasRestantes[letra] = (letrasRestantes[letra] || 0) + 1
+  })
 
-  const letra = letrasTentativa[indice]
+ // Primeira passagem: Marca as letras na posição correta
+  letrasTentativa.forEach((letra, i) => {
+    if (letra === letrasCorretas[i]) {
+      colunasDigitando[i].classList.add("correto")
+      letrasUsadas[i] = true
+      letrasRestantes[letra]-- // Diminui a contagem de letras disponíveis
+    }
+  });
 
-  // Verifica se a letra está na posição correta
-  if (letra === letrasCorretas[indice]) {
-    colunasDigitando[indice].classList.add("correto")
-    letrasUsadas[indice] = true // Marca como usada
-  }
-  // Se a letra não estiver na posição correta, verifica se existe em outra posição
-  else if (letrasCorretas.includes(letra)) {
-    colunasDigitando[indice].classList.add("deslocado")}
-  else {
-    colunasDigitando[indice].classList.add("errado")
-  }
+  // Segunda passagem: Verifica as letras deslocadas
+  letrasTentativa.forEach((letra, i) => {
+    if (
+      !colunasDigitando[i].classList.contains("correto") && // Não é correta
+      letrasRestantes[letra] > 0 // Ainda há instâncias disponíveis
+    ) {
+      colunasDigitando[i].classList.add("deslocado")
+      letrasRestantes[letra]-- // Usa uma instância
+    } else if (!colunasDigitando[i].classList.contains("correto")) {
+      colunasDigitando[i].classList.add("errado")
+    }
+  });
 
-  return verificador_Tentativa(tentativa, palavraCorreta, numcolunas, letrasCorretas, letrasTentativa, colunasDigitando, letrasUsadas, indice + 1)
+  // Verifica se a tentativa completa está correta
+  const Correto = tentativa.toUpperCase() === palavraCorreta.toUpperCase()
+  return { resultado: true, Correto }
 }
-
 // Move o jogo para a próxima linha após a tentativa
 const moverParaProximaLinha = (linhaAtual) => {
   const colunasDigitando = document.querySelectorAll(".digitando")
