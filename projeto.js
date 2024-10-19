@@ -167,20 +167,27 @@ const botaoBackspace = document.createElement("button")
         if (resultado) {
             if (Correto) {
                 alert("VOCÊ ACERTOU!!!")
-                // Cria o botão de reiniciar apenas se o usuário acertar
-                const botaoReiniciar = document.createElement("button")
-                botaoReiniciar.textContent = "Reiniciar Jogo"
-                botaoReiniciar.addEventListener("click", reiniciarJogo)
-                document.body.append(botaoReiniciar)
+                //cria a botao de reinicio apenas se o usuario acertar e o botao nao existir
+                if (!document.querySelector("#botaoReiniciar")) {
+                // criação do botão
+                   const botaoReiniciar = document.createElement("button")
+                   botaoReiniciar.textContent = "Reiniciar Jogo"
+                   botaoReiniciar.setAttribute("id", "botaoReiniciar")
+                   botaoReiniciar.addEventListener("click", reiniciarJogo)
+                   document.body.append(botaoReiniciar)
+                }
             } else if (estadoJogo.linhaAtual === numlinhas - 1) {
                 alert(`Você errou! A palavra correta era ${palavraCorreta}`)
-                // Cria o botão de reiniciar apenas se o usuário esgotar as tentativas
-                const botaoReiniciar = document.createElement("button")
-                botaoReiniciar.textContent = "Reiniciar Jogo"
-                botaoReiniciar.addEventListener("click", reiniciarJogo)
-                document.body.append(botaoReiniciar)
+                //cria o botão de reinicio apenas se as tentativas do usuario acabarem e o botão ja nao existir
+                if (!document.querySelector("#botaoReiniciar")) {
+                    const botaoReiniciar = document.createElement("button")
+                    botaoReiniciar.textContent = "Reiniciar Jogo"
+                    botaoReiniciar.setAttribute("id", "botaoReiniciar")
+                    botaoReiniciar.addEventListener("click", reiniciarJogo)
+                    document.body.append(botaoReiniciar)
+                }
             } else {
-                estadoJogo.linhaAtual = moverParaProximaLinha(estadoJogo.linhaAtual);
+                estadoJogo.linhaAtual = moverParaProximaLinha(estadoJogo.linhaAtual)
                 estadoJogo.colunaAtual = 0
             }
         }
