@@ -3,7 +3,7 @@ const palavraSecreta = (tema) => {
   if (tema == "Pokemon") {
     const numero = Math.floor(Math.random() * Pokemon.length);
     return iniciarJogo(
-      steam[numero],
+      Pokemon[numero],
       6,
       5,
       document.querySelector(".container-tiles"),
@@ -12,10 +12,10 @@ const palavraSecreta = (tema) => {
       document.querySelector("#linhaTecladoTerceira"),
       document.querySelector("#linhaBackspaceEnter")
     )
-  } else if (tema == "pais") {
-    const numero = Math.floor(Math.random() * pais.length);
+  } else if (tema == "Pais") {
+    const numero = Math.floor(Math.random() * Pais.length);
     return iniciarJogo(
-      pais[numero],
+      Pais[numero],
       6,
       5,
       document.querySelector(".container-tiles"),
@@ -27,7 +27,7 @@ const palavraSecreta = (tema) => {
   } else if (tema == "Brinquedos") {
     const numero = Math.floor(Math.random() * Brinquedos.length);
     return iniciarJogo(
-      brinquedos[numero],
+      Brinquedos[numero],
       6,
       5,
       document.querySelector(".container-tiles"),
