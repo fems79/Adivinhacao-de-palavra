@@ -24,10 +24,10 @@ const palavraSecreta = (tema) => {
       document.querySelector("#linhaTecladoTerceira"),
       document.querySelector("#linhaBackspaceEnter")
     )
-  } else if (tema == "Brinquedos") {
-    const numero = Math.floor(Math.random() * Brinquedos.length);
+  } else if (tema == "Times de Futebol") {
+    const numero = Math.floor(Math.random() * Times_de_Futebol.length);
     return iniciarJogo(
-      Brinquedos[numero],
+      Times_de_Futebol[numero],
       6,
       5,
       document.querySelector(".container-tiles"),
