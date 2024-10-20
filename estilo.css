@@ -100,3 +100,17 @@ button:active {
 .tema:hover {
     background-color: #5a6268;
 }
+.mensagem {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo branco com opacidade */
+    border: 2px solid #00796b; /* Borda verde-água */
+    border-radius: 8px; /* Bordas arredondadas */
+    padding: 20px;
+    font-size: 24px; /* Tamanho da fonte */
+    color: #00796b; /* Cor do texto */
+    display: none; /* Oculta por padrão */
+    z-index: 1000; /* Coloca a mensagem acima de outros elementos */
+}
