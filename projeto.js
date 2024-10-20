@@ -110,6 +110,17 @@ const criarLinhaTeclado = (teclas, elementoTecladoLinha, CliqueTecla) => {teclas
     elementoTecladoLinha.append(botaoTecla)})
 }
 //commit Leonardo Caricchio
+//função para exibir mensagem na tela do usuario
+const exibirMensagem = (texto) => {
+  const mensagemJogo = document.getElementById("mensagemJogo")
+  mensagemJogo.textContent = texto;
+  mensagemJogo.style.display = "block"
+  //define um tempo limite de 3000 milisegundos para exibição da mensagem
+  setTimeout(() => {
+      mensagemJogo.style.display = "none" 
+  }, 3000) 
+}
+
 //função do momento inicial antes de qualquer interaçaõ do usuario
 const Jogo_do_zero = (tentativas) => ({linhaAtual: 0,colunaAtual: 0,tentativas,})
 //função nova Leonardo Caricchio do Nascimento
@@ -166,7 +177,7 @@ const botaoBackspace = document.createElement("button")
    // Validação da tentativa do usuário  
         if (resultado) {
             if (Correto) {
-                alert("VOCÊ ACERTOU!!!")
+                exibirMensagem("VOCE ACERTOU!!!")
                 //cria a botao de reinicio apenas se o usuario acertar e o botao nao existir
                 if (!document.querySelector("#botaoReiniciar")) {
                 // criação do botão
@@ -177,7 +188,7 @@ const botaoBackspace = document.createElement("button")
                    document.body.append(botaoReiniciar)
                 }
             } else if (estadoJogo.linhaAtual === numlinhas - 1) {
-                alert(`Você errou! A palavra correta era ${palavraCorreta}`)
+                exibirMensagem(`Você errou! A palavra correta era ${palavraCorreta}`)
                 //cria o botão de reinicio apenas se as tentativas do usuario acabarem e o botão ja nao existir
                 if (!document.querySelector("#botaoReiniciar")) {
                     const botaoReiniciar = document.createElement("button")
