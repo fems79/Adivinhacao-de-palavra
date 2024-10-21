@@ -77,7 +77,7 @@ const moverParaProximaLinha = (linhaAtual) => {
 }
 // Coloca a letra clicada no teclado na linha atual
 const CliqueTeclado = (letra, linhaAtual, colunaAtual, numcolunas, tentativas) => {
-  if (colunaAtual === numcolunas) return {colunaAtual}
+  if (colunaAtual >= numcolunas) return {colunaAtual}
   
   const tileAtual = document.querySelector(`#linha${linhaAtual}coluna${colunaAtual}`)
   tileAtual.textContent = letra
@@ -205,7 +205,7 @@ const botaoBackspace = document.createElement("button")
         botaoEnter.click()
       }
       else if (teclaPressionada === "BACKSPACE") {botaoBackspace.click()} 
-      else if (/^[A-Z]$/.test(teclaPressionada)) {CliqueTecla(teclaPressionada)}
+      else if (/^[A-Z]$/.test(teclaPressionada) && estadoJogo.colunaAtual < numcolunas) {CliqueTecla(teclaPressionada)}
     }
   }
 
