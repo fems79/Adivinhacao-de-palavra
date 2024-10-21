@@ -129,26 +129,7 @@ const voltarParaMenuPrincipal = () => {
   console.log("Voltando para o menu principal...")
   window.location.href = "index.html"
 }
-//função nova Leonardo Caricchio do Nascimento
-//função para reiniciar o jogo caso o usuario acertar
-const reiniciarJogo = () => {
-  //constantes que armazenam os elementos do jogo
-  const tabuleiro = document.querySelector(".container-tiles");
-  const tecladoPrimeira = document.querySelector("#linhaTecladoPrimeira");
-  const tecladoSegunda = document.querySelector("#linhaTecladoSegunda");
-  const tecladoTerceira = document.querySelector("#linhaTecladoTerceira");
-  const tecladoBackspaceEnter = document.querySelector("#linhaBackspaceEnter");
-  //elementos do jogo sendo apagados,pois serao reiniciados
-  tabuleiro.innerHTML = "";
-  tecladoPrimeira.innerHTML = "";
-  tecladoSegunda.innerHTML = "";
-  tecladoTerceira.innerHTML = "";
-  tecladoBackspaceEnter.innerHTML = "";
-   
-  //chama a função para reiniciar com a nova palavra
-  iniciarJogo(temaEscolhido, 6, 5, tabuleiro, tecladoPrimeira, tecladoSegunda, tecladoTerceira, tecladoBackspaceEnter);
-}
-  
+
 // função que inicia o jogo
 const iniciarJogo = (palavraCorreta,numlinhas,numcolunas,elementoTabuleiro,linhaTecladoPrimeira,linhaTecladoSegunda,linhaTecladoTerceira,linhaBackspaceEnter) => {
 const tentativas = Criar_tabuleiro(numlinhas,numcolunas,elementoTabuleiro)
