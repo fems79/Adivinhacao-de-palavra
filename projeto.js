@@ -123,6 +123,12 @@ const exibirMensagem = (texto) => {
 
 //função do momento inicial antes de qualquer interaçaõ do usuario
 const Jogo_do_zero = (tentativas) => ({linhaAtual: 0,colunaAtual: 0,tentativas,})
+
+// Função para voltar ao menu principal
+const voltarParaMenuPrincipal = () => {
+  console.log("Voltando para o menu principal...")
+  window.location.href = "index.html"
+}
 //função nova Leonardo Caricchio do Nascimento
 //função para reiniciar o jogo caso o usuario acertar
 const reiniciarJogo = () => {
@@ -178,25 +184,10 @@ const botaoBackspace = document.createElement("button")
         if (resultado) {
             if (Correto) {
                 exibirMensagem("VOCE ACERTOU!!!")
-                //cria a botao de reinicio apenas se o usuario acertar e o botao nao existir
-                if (!document.querySelector("#botaoReiniciar")) {
-                // criação do botão
-                   const botaoReiniciar = document.createElement("button")
-                   botaoReiniciar.textContent = "Reiniciar Jogo"
-                   botaoReiniciar.setAttribute("id", "botaoReiniciar")
-                   botaoReiniciar.addEventListener("click", reiniciarJogo)
-                   document.body.append(botaoReiniciar)
-                }
+                exibirBotaoMenu()
             } else if (estadoJogo.linhaAtual === numlinhas - 1) {
                 exibirMensagem(`Você errou! A palavra correta era ${palavraCorreta}`)
-                //cria o botão de reinicio apenas se as tentativas do usuario acabarem e o botão ja nao existir
-                if (!document.querySelector("#botaoReiniciar")) {
-                    const botaoReiniciar = document.createElement("button")
-                    botaoReiniciar.textContent = "Reiniciar Jogo"
-                    botaoReiniciar.setAttribute("id", "botaoReiniciar")
-                    botaoReiniciar.addEventListener("click", reiniciarJogo)
-                    document.body.append(botaoReiniciar)
-                }
+                exibirBotaoMenu()
             } else {
                 estadoJogo.linhaAtual = moverParaProximaLinha(estadoJogo.linhaAtual)
                 estadoJogo.colunaAtual = 0
@@ -217,6 +208,20 @@ const botaoBackspace = document.createElement("button")
       else if (/^[A-Z]$/.test(teclaPressionada)) {CliqueTecla(teclaPressionada)}
     }
   }
+
+// Função para exibir o botão do menu principal
+const exibirBotaoMenu = () => {
+  // Remove o botão se já existir
+  const botaoMenu = document.querySelector("#botaoMenu")
+  if (!botaoMenu) {
+    const novoBotaoMenu = document.createElement("button")
+    novoBotaoMenu.textContent = "Voltar ao Menu Principal"
+    novoBotaoMenu.setAttribute("id", "botaoMenu")
+    novoBotaoMenu.addEventListener("click", voltarParaMenuPrincipal)
+    document.body.append(novoBotaoMenu)
+  }
+}
+
 // Resgatando o tema escolhido 
 const temaEscolhido = localStorage.getItem("temaEscolhido")
   
