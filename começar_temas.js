@@ -36,6 +36,54 @@ const palavraSecreta = (tema) => {
       document.querySelector("#linhaTecladoTerceira"),
       document.querySelector("#linhaBackspaceEnter")
     )
+  } else if (tema == "Animais") {
+    const numero = Math.floor(Math.random() * Animais.length);
+    return iniciarJogo(
+      Animais[numero],
+      6,
+      5,
+      document.querySelector(".container-tiles"),
+      document.querySelector("#linhaTecladoPrimeira"),
+      document.querySelector("#linhaTecladoSegunda"),
+      document.querySelector("#linhaTecladoTerceira"),
+      document.querySelector("#linhaBackspaceEnter")
+    )
+  } else if (tema == "Frutas") {
+    const numero = Math.floor(Math.random() * Frutas.length);
+    return iniciarJogo(
+      Frutas[numero],
+      6,
+      5,
+      document.querySelector(".container-tiles"),
+      document.querySelector("#linhaTecladoPrimeira"),
+      document.querySelector("#linhaTecladoSegunda"),
+      document.querySelector("#linhaTecladoTerceira"),
+      document.querySelector("#linhaBackspaceEnter")
+    )
+  } else if (tema == "Series") {
+    const numero = Math.floor(Math.random() * Series.length);
+    return iniciarJogo(
+      Series[numero],
+      6,
+      5,
+      document.querySelector(".container-tiles"),
+      document.querySelector("#linhaTecladoPrimeira"),
+      document.querySelector("#linhaTecladoSegunda"),
+      document.querySelector("#linhaTecladoTerceira"),
+      document.querySelector("#linhaBackspaceEnter")
+    )
+  } else if (tema == "Filmes") {
+    const numero = Math.floor(Math.random() * Filmes.length);
+    return iniciarJogo(
+      Filmes[numero],
+      6,
+      5,
+      document.querySelector(".container-tiles"),
+      document.querySelector("#linhaTecladoPrimeira"),
+      document.querySelector("#linhaTecladoSegunda"),
+      document.querySelector("#linhaTecladoTerceira"),
+      document.querySelector("#linhaBackspaceEnter")
+    )
   }
 }
 const iniciarJogo = (tema) => {
