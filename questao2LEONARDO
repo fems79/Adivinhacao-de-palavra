@@ -1,0 +1,22 @@
+import java.util.Scanner;
+import java.util.Random;
+public class Segundaquestao{
+    public static void main(String[] args) {
+        Scanner entrada=new Scanner(System.in);
+        System.out.println("digite um valor: ");
+        int quantidade=entrada.nextInt();
+        entrada.close();
+        String[] alfabeto=new String[26];
+        Random random = new Random();
+        alfabeto[0]="A";alfabeto[1]="B";alfabeto[2]="C";alfabeto[3]="D";alfabeto[4]="E";alfabeto[5]="F";alfabeto[6]="G";alfabeto[7]="H";alfabeto[8]="I";
+        alfabeto[9]="J";alfabeto[10]="K";alfabeto[11]="L";alfabeto[12]="M";alfabeto[13]="N";alfabeto[14]="O";alfabeto[15]="P";alfabeto[16]="Q";alfabeto[17]="R";
+        alfabeto[18]="S";alfabeto[19]="T";alfabeto[20]="U";alfabeto[21]="V";alfabeto[22]="W";alfabeto[23]="X";alfabeto[24]="Y";alfabeto[25]="Z";
+        String[] palavra=new String[quantidade];
+        for(int i=0;i<quantidade;i++){
+            int min=0;int max=25;
+            double index=random.nextInt(max-min +1)+min;
+            palavra[i]=alfabeto[(int)index];
+            System.out.print(palavra[i]);
+        }
+    }
+}
