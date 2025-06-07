@@ -1,0 +1,225 @@
+// Autores do código: Felipe Ramos Santana e Leonardo Caricchio Do Nascimento 
+import java.util.Random;
+import java.util.Scanner;
+
+public class Jogodavelha {
+
+    public static void main(String[] args) {
+
+        Random sorteio = new Random();
+        Scanner entrada = new Scanner(System.in);
+
+        // Linhas do jogo a serem preenchidas 
+        char[] linha1 = new char[5];
+        char[] linha2 = new char[5];
+        char[] linha3 = new char[5];
+
+        // Adicionando barras para modelar o jogo 
+        for (int i = 0; i < 5; i++) {
+            linha1[i] = '|';
+            linha2[i] = '|';
+            linha3[i] = '|';
+        }
+
+        // Adicionando números que vão representar o local em que o “X” ou “O” vai ficar 
+        linha1[0] = '1'; linha1[2] = '2'; linha1[4] = '3';
+        linha2[0] = '4'; linha2[2] = '5'; linha2[4] = '6';
+        linha3[0] = '7'; linha3[2] = '8'; linha3[4] = '9';
+        
+        //Array para que os números não se repitam
+        int[]total_numeros=new int[10];
+        for (int i = 1; i < 10; i++) {
+            total_numeros[i]=i;
+        }
+
+        System.out.println(linha1);
+        System.out.println(linha2);
+        System.out.println(linha3);
+        
+        int[]contador=new int[10];
+         for(int j=1;j<10;j++){
+				contador[j]=0;
+			}
+
+        // For principal 
+        for (int i = 0; i < 9; i++) {
+
+            System.out.println("\n");
+
+            int numeroAleatorio = sorteio.nextInt(9) + 1;
+            int numeroUsuario;
+            int numero;
+            boolean valido=false;
+            // If que representa a jogada do usuário 
+            if (i % 2 == 0) {
+				System.out.println("Digite um número de 1 a 9 para escolher a posição:");
+                 numeroUsuario = entrada.nextInt();
+				// While para que tenha certeza que o número vai estar entre 0 e 9, e que também não tenha sido usado
+                 while(valido==false){
+                 for(int k=1;k<10;k++){
+					 if(numeroUsuario<0||numeroUsuario>9){
+						  System.out.println("Digite um número válido!:");
+                 numeroUsuario = entrada.nextInt();
+					 }
+					 if(numeroUsuario==total_numeros[k]){
+					     if(contador[k]==0){
+							contador[k]+=1;
+						  valido=true;
+						 }
+						 else{
+							 System.out.println("Digite um número válido!:");
+                 numeroUsuario = entrada.nextInt();
+						 }
+					 }
+				 }
+			 }
+			  numero=numeroUsuario;
+		 }
+         // Else que representa a jogada do "adversário" 
+             else { 
+				while(valido==false){
+                for(int l=1;l<10;l++){
+					 if(numeroAleatorio==total_numeros[l]){
+						 if(contador[l]==0){
+							 contador[l]+=1;
+							 valido=true;
+						 }
+						 else{
+							numeroAleatorio = sorteio.nextInt(9) + 1;
+						 }
+					 }
+				 }
+            }
+            numero = numeroAleatorio;
+		}
+		
+
+            // Switch para fazer a jogada,"i" par representa a jogada do usuario(X) e "i" impar representa a jogada do jogador artificial(O)
+            switch (numero) {
+                case 1:
+                    linha1[0] = (i % 2 == 0) ? 'X' : 'O';
+                    break;
+                case 2:
+                    linha1[2] = (i % 2 == 0) ? 'X' : 'O';
+                    break;
+                case 3:
+                    linha1[4] = (i % 2 == 0) ? 'X' : 'O';
+                    break;
+                case 4:
+                    linha2[0] = (i % 2 == 0) ? 'X' : 'O';
+                    break;
+                case 5:
+                    linha2[2] = (i % 2 == 0) ? 'X' : 'O';
+                    break;
+                case 6:
+                    linha2[4] = (i % 2 == 0) ? 'X' : 'O';
+                    break;
+                case 7:
+                    linha3[0] = (i % 2 == 0) ? 'X' : 'O';
+                    break;
+                case 8:
+                    linha3[2] = (i % 2 == 0) ? 'X' : 'O';
+                    break;
+                case 9:
+                    linha3[4] = (i % 2 == 0) ? 'X' : 'O';
+                    break;
+            }
+            
+            //Exibição do tabuleiro
+            if (i % 2 == 0) {
+                System.out.println("Sua jogada:");
+            } else {
+                System.out.println("Jogada do adversario:");
+            }
+            for (int j = 0; j < 5; j++) {
+                System.out.print(linha1[j]);
+            }
+            System.out.println();
+
+            for (int j = 0; j < 5; j++) {
+                System.out.print(linha2[j]);
+            }
+            System.out.println();
+
+            for (int j = 0; j < 5; j++) {
+                System.out.print(linha3[j]);
+            }
+            System.out.println();
+
+          //Looping para verificar se alguem venceu o jogo completando todos da mesma coluna
+            for (int k = 0; k < 5; k++) {
+
+                if (k % 2 == 0) {
+
+                    if (linha1[k] == 'X' && linha2[k] == 'X' && linha3[k] == 'X') {
+                        System.out.println("Parabéns,você ganhou!");
+                        entrada.close();
+                        System.exit(0);
+
+                    } else if (linha1[k] == 'O' && linha2[k] == 'O' && linha3[k] == 'O') {
+                        System.out.println("Você perdeu!");
+                        entrada.close();
+                        System.exit(0);
+                    }
+                }
+            }
+
+             //Condicional para verificar se alguem venceu o jogo completando todos da mesma linha
+            if (linha1[0] == 'O' && linha1[2] == 'O' && linha1[4] == 'O') {
+                System.out.println("Você perdeu!");
+                entrada.close();
+                System.exit(0);
+
+            } else if (linha1[0] == 'X' && linha1[2] == 'X' && linha1[4] == 'X') {
+                System.out.println("Parabéns,você ganhou!");
+                entrada.close();
+                System.exit(0);
+
+            } else if (linha2[0] == 'O' && linha2[2] == 'O' && linha2[4] == 'O') {
+                System.out.println("Você perdeu!");
+                entrada.close();
+                System.exit(0);
+
+            } else if (linha2[0] == 'X' && linha2[2] == 'X' && linha2[4] == 'X') {
+                System.out.println("Parabéns,você ganhou!");
+                entrada.close();
+                System.exit(0);
+
+            } else if (linha3[0] == 'O' && linha3[2] == 'O' && linha3[4] == 'O') {
+                System.out.println("Você perdeu!");
+                entrada.close();
+                System.exit(0);
+
+            } else if (linha3[0] == 'X' && linha3[2] == 'X' && linha3[4] == 'X') {
+                System.out.println("Parabéns,você ganhou!");
+                entrada.close();
+                System.exit(0);
+            
+             //Condicional para verificar se alguem venceu o jogo completando todos da diagonal principal ou secundária
+            } else if (linha1[0] == 'X' && linha2[2] == 'X' && linha3[4] == 'X') {
+                System.out.println("Parabéns,você ganhou!");
+                entrada.close();
+                System.exit(0);
+
+            } else if (linha1[0] == 'O' && linha2[2] == 'O' && linha3[4] == 'O') {
+                System.out.println("Você perdeu!");
+                entrada.close();
+                System.exit(0);
+
+            } else if (linha3[0] == 'X' && linha2[2] == 'X' && linha1[4] == 'X') {
+                System.out.println("Parabéns,você ganhou!");
+                entrada.close();
+                System.exit(0);
+
+            } else if (linha3[0] == 'O' && linha2[2] == 'O' && linha1[4] == 'O') {
+                System.out.println("Você perdeu!");
+                entrada.close();
+                System.exit(0);
+            }
+       }
+        //Para caso ninguem vença
+        System.out.println("Ninguem venceu!");
+        entrada.close();
+        System.exit(0);
+    }
+}
